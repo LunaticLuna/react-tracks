@@ -59,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
 CORS_ALLOWED_ORIGINS = [
@@ -150,4 +151,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+# STATIC_URL = '/static/'
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.11/howto/static-files/
+PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
+STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
+
+# Extra lookup directories for collectstatic to find static files
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
